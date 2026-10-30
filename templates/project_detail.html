@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Project Hero Header -->
+<section class="bg-ivory py-12 sm:py-16 divider-b">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 space-y-6">
+    <div class="flex items-center justify-between pb-3 divider-b">
+      <a href="/projects" class="text-xs uppercase tracking-[0.18em] font-medium text-muted hover:text-emerald-accent transition-colors">
+        ← Back to Projects
+      </a>
+      <span class="text-xs uppercase tracking-[0.18em] font-semibold text-emerald-accent">
+        {{ project.category }}
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pt-2">
+      <div class="md:col-span-8 space-y-4">
+        <h1 class="font-display-condensed text-4xl sm:text-6xl font-bold text-ink uppercase">
+          {{ project.title }}
+        </h1>
+        <span class="emerald-bar-wide"></span>
+        <p class="text-base sm:text-lg text-ink/85 leading-relaxed pt-1">
+          {{ project.short_description }}
+        </p>
+      </div>
+
+      <div class="md:col-span-4 flex flex-wrap md:justify-end gap-3">
+        {% if project.live_url %}
+        <a
+          href="{{ project.live_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="arrow-link inline-flex items-center gap-2 px-5 py-3 bg-ink text-ivory text-xs uppercase tracking-[0.16em] font-medium hover:bg-emerald-accent hover:text-white transition-colors"
+        >
+          <span>Open Project</span>
+          <span class="arrow-icon">→</span>
+        </a>
+        {% endif %}
+        <a
+          href="{{ project.github_url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="arrow-link inline-flex items-center gap-2 px-5 py-3 bg-ink text-ivory text-xs uppercase tracking-[0.16em] font-medium hover:bg-emerald-accent hover:text-white transition-colors"
+        >
+          <span>GitHub</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project Illustration Header Box -->
+<section class="bg-band py-10 sm:py-12 divider-b">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="bg-card overflow-hidden border border-ink/10 aspect-[4/3] w-full max-w-4xl mx-auto">
+      {% if has_project_image(project) %}
+      <img
+        src="{{ project.image }}"
+        alt="{{ project.title }} illustration"
+        loading="lazy"
+        class="project-preview-img"
+      />
+      {% else %}
+      <div class="project-placeholder-card">
+        <span class="text-xs uppercase tracking-[0.16em] font-semibold text-emerald-accent">{{ project.category }}</span>
+        <span class="font-display-condensed text-3xl sm:text-4xl font-bold text-ink uppercase leading-tight">{{ project.title }}</span>
+        <span class="text-xs uppercase tracking-[0.12em] text-muted">{{ project.tech_stack | join(' · ') }}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Case Study Details: Problem, Solution, Features, and Tech Stack -->
+<section class="bg-ivory py-14 sm:py-16">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <!-- Left Column: Problem, Solution, Features -->
+    <div class="lg:col-span-7 space-y-10">
+      <div class="space-y-3 pb-8 divider-b">
+        <h2 class="section-heading">01 // OVERVIEW &amp; PROBLEM</h2>
+        <span class="emerald-bar"></span>
+        <p class="text-base sm:text-lg text-ink/85 leading-relaxed pt-2">
+          {{ project.problem }}
+        </p>
+      </div>
+
+      <div class="space-y-3 pb-8 divider-b">
+        <h2 class="section-heading">02 // ARCHITECTURE &amp; SOLUTION</h2>
+        <span class="emerald-bar"></span>
+        <p class="text-base sm:text-lg text-ink/85 leading-relaxed pt-2">
+          {{ project.solution }}
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="section-heading">03 // KEY FEATURES</h2>
+        <span class="emerald-bar"></span>
+        <ul class="space-y-3 pt-2">
+          {% for feature in project.features %}
+          <li class="flex items-start gap-3 text-base text-ink/90">
+            <span class="w-2 h-2 rounded-full bg-emerald-accent mt-2 shrink-0"></span>
+            <span>{{ feature }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Column: Tech Stack & Links -->
+    <aside class="lg:col-span-5 space-y-6">
+      <div class="bg-band p-6 sm:p-8 border border-ink/10 space-y-6">
+        <div>
+          <h3 class="section-heading">TECH STACK</h3>
+          <span class="emerald-bar mt-2"></span>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          {% for tech in project.tech_stack %}
+          <span class="px-3 py-1.5 bg-ivory border border-ink/10 text-xs uppercase tracking-[0.14em] font-medium text-ink">
+            {{ tech }}
+          </span>
+          {% endfor %}
+        </div>
+
+        <div class="pt-4 divider-t space-y-3">
+          <p class="text-xs uppercase tracking-[0.16em] font-semibold text-ink">SOURCE CODE</p>
+          <div class="flex flex-col gap-2.5 text-xs uppercase tracking-[0.16em] font-medium">
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener noreferrer" class="arrow-link flex items-center justify-between py-2.5 px-4 bg-ivory border border-ink/10 text-ink hover:border-emerald-accent hover:text-emerald-accent transition-colors">
+              <span>Open Application</span>
+              <span class="arrow-icon">→</span>
+            </a>
+            {% endif %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="arrow-link flex items-center justify-between py-2.5 px-4 bg-ivory border border-ink/10 text-ink hover:border-emerald-accent hover:text-emerald-accent transition-colors">
+              <span>View on GitHub</span>
+              <span class="arrow-icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}

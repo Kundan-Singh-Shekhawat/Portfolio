@@ -1,0 +1,269 @@
+/*
+ * Custom styles matching the Mariana Napolitani editorial green & monochrome design
+ * Supports Light and Dark mode via CSS custom properties
+ */
+
+:root,
+[data-theme="light"] {
+  --rgb-ivory: 246 247 245;
+  --rgb-band: 236 238 235;
+  --rgb-card: 226 229 225;
+  --rgb-ink: 20 22 21;
+  --rgb-muted: 90 95 92;
+  --rgb-emerald-accent: 14 124 85;
+  --rgb-emerald-dark: 9 93 63;
+
+  --bg-ivory: #F6F7F5;
+  --bg-band: #ECEEEB;
+  --bg-card: #E2E5E1;
+  --text-ink: #141615;
+  --text-muted: #5A5F5C;
+  --accent-emerald: #0E7C55;
+  --accent-emerald-dark: #095D3F;
+  --border-subtle: #D5D9D4;
+  --card-shadow: rgba(20, 22, 21, 0.12);
+  color-scheme: light;
+}
+
+html.dark,
+[data-theme="dark"] {
+  --rgb-ivory: 15 18 17;
+  --rgb-band: 22 26 24;
+  --rgb-card: 30 36 33;
+  --rgb-ink: 240 243 241;
+  --rgb-muted: 154 163 158;
+  --rgb-emerald-accent: 22 163 114;
+  --rgb-emerald-dark: 16 133 92;
+
+  --bg-ivory: #0F1211;
+  --bg-band: #161A18;
+  --bg-card: #1E2421;
+  --text-ink: #F0F3F1;
+  --text-muted: #9AA39E;
+  --accent-emerald: #16A372;
+  --accent-emerald-dark: #10855C;
+  --border-subtle: #262D2A;
+  --card-shadow: rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-ivory);
+  color: var(--text-ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body {
+  background-color: var(--bg-ivory);
+  color: var(--text-ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Giant condensed hero display typography (matches MARIANA NAPOLITANI) */
+.font-display-condensed {
+  font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+}
+
+/* High-contrast serif for monogram (Y/N) and impact numerals (5+, 40+, 25+) */
+.font-editorial-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Section title with wide tracking */
+.section-heading {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-ink);
+}
+
+/* Short emerald green accent bar under section titles */
+.emerald-bar {
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--accent-emerald);
+}
+
+.emerald-bar-wide {
+  display: block;
+  width: 4rem;
+  height: 2px;
+  background-color: var(--accent-emerald);
+}
+
+/* Hairline dividers */
+.divider-t {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.divider-b {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.divider-r {
+  border-right: 1px solid var(--border-subtle);
+}
+
+.divider-l {
+  border-left: 1px solid var(--border-subtle);
+}
+
+/* Project card heading alignment (two title lines + category label) */
+.project-card-header {
+  min-height: 4.75rem;
+}
+
+/* Project mockup card hover */
+.mockup-card {
+  background-color: var(--bg-card);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.25s ease;
+}
+
+.mockup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -10px var(--card-shadow);
+}
+
+/* Project preview image inside image box */
+.project-preview-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* CSS placeholder card fallback when a project's image field is empty or missing */
+.project-placeholder-card {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Outlined CTA box in footer */
+.cta-outline-box {
+  border: 1px solid var(--accent-emerald);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.cta-outline-box:hover {
+  background-color: var(--accent-emerald);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.cta-outline-box:hover .cta-arrow {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.cta-arrow {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Circular hero portrait */
+.hero-photo {
+  --circle-size: 420px;
+  --photo-width: 80%;
+  --photo-shift-x: 0px;
+  --photo-shift-y: 69px;
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  clip-path: circle(50% at 50% 50%);
+  isolation: isolate;
+  background: #0E7C5A;
+}
+
+.hero-photo img {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: var(--photo-width);
+  height: auto;
+  max-height: none;
+  max-width: none;
+  display: block;
+  transform: translate(var(--photo-shift-x), var(--photo-shift-y));
+}
+
+@media (max-width: 767px) {
+  .hero-photo {
+    --circle-size: 280px;
+    --photo-shift-y: 53px;
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 2rem auto 0;
+    transform: none;
+  }
+}
+
+/* Arrow link hover nudge */
+.arrow-link .arrow-icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.arrow-link:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Theme toggle icon visibility */
+html.dark .theme-icon-moon,
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+html.dark .theme-icon-sun,
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+html:not(.dark) .theme-icon-sun,
+[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+
+html:not(.dark) .theme-icon-moon,
+[data-theme="light"] .theme-icon-moon {
+  display: block;
+}
+
+/* Custom focus styles */
+input:focus,
+textarea:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-emerald);
+  outline-offset: 2px;
+}

@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Section 01: Biography & Portrait -->
+<section class="bg-ivory py-12 sm:py-16 divider-b">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="w-64 sm:w-80">
+          <img
+            src="{{ site.profile_image }}"
+            alt="{{ site.name }}"
+            class="w-full h-auto block"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-5">
+        <p class="text-xs uppercase tracking-[0.22em] font-semibold text-emerald-accent">
+          {{ site.role }}
+        </p>
+        <h1 class="font-display-condensed text-5xl sm:text-6xl font-bold text-ink uppercase">
+          {{ site.name }}
+        </h1>
+        <span class="emerald-bar-wide"></span>
+
+        <div class="space-y-4 pt-2">
+          {% for paragraph in site.bio_paragraphs %}
+          <p class="text-base sm:text-lg text-ink/85 leading-relaxed">
+            {{ paragraph }}
+          </p>
+          {% endfor %}
+        </div>
+
+        <div class="pt-4 flex flex-wrap gap-4">
+          <a
+            href="{{ site.resume_url }}"
+            download
+            class="arrow-link inline-flex items-center gap-2 px-6 py-3 bg-ink text-ivory text-xs uppercase tracking-[0.16em] font-medium hover:bg-emerald-accent hover:text-white transition-colors"
+          >
+            <span>Download Resume</span>
+            <span>↓</span>
+          </a>
+          <a
+            href="{{ site.social.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="arrow-link inline-flex items-center gap-2 px-6 py-3 border border-emerald-accent text-ink text-xs uppercase tracking-[0.16em] font-medium hover:bg-emerald-accent hover:text-white transition-colors"
+          >
+            <span>GitHub Profile</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 02: Grouped Skills (No Progress Bars on About Page) -->
+<section id="skills" class="bg-band py-14 sm:py-16 divider-b">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
+    <div>
+      <h2 class="section-heading">SKILLS BY CATEGORY</h2>
+      <span class="emerald-bar mt-2.5"></span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {% for category, items in skills.items() %}
+      <div class="bg-ivory p-6 border border-ink/10 space-y-4">
+        <div class="flex items-center justify-between pb-2.5 divider-b">
+          <h3 class="text-xs uppercase tracking-[0.18em] font-bold text-ink">{{ category }}</h3>
+          <span class="text-xs font-bold text-emerald-accent">0{{ loop.index }}</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {% for skill_name in items %}
+          <span class="px-3 py-1.5 bg-band border border-ink/10 text-xs font-medium text-ink">
+            {{ skill_name }}
+          </span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Section 03: Experience / Training, Education, and Certifications -->
+<section class="bg-ivory py-14 sm:py-16">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <!-- Experience / Training -->
+    <div class="lg:col-span-7 space-y-8">
+      <div>
+        <h2 class="section-heading">EXPERIENCE &amp; TRAINING</h2>
+        <span class="emerald-bar mt-2.5"></span>
+      </div>
+
+      <div class="space-y-8">
+        {% for item in experience %}
+        <article class="pl-6 border-l-2 border-emerald-accent space-y-2.5">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-lg font-semibold text-ink">{{ item.role }}</h3>
+            <span class="text-xs uppercase tracking-[0.16em] font-semibold text-emerald-accent">{{ item.period }}</span>
+          </div>
+          <p class="text-xs uppercase tracking-[0.14em] text-muted">
+            {{ item.company }}
+          </p>
+          <ul class="space-y-1.5 pt-1 text-sm sm:text-base text-ink/85">
+            {% for point in item.highlights %}
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-accent font-bold">—</span>
+              <span>{{ point }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Education & Certifications -->
+    <div class="lg:col-span-5 space-y-10">
+      <div class="space-y-6">
+        <div>
+          <h2 class="section-heading">EDUCATION</h2>
+          <span class="emerald-bar mt-2.5"></span>
+        </div>
+
+        {% for edu in education %}
+        <article class="bg-band p-6 border border-ink/10 space-y-2">
+          <span class="text-xs uppercase tracking-[0.16em] font-semibold text-emerald-accent">{{ edu.period }}</span>
+          <h3 class="text-base font-semibold text-ink">{{ edu.degree }}</h3>
+          <p class="text-sm text-muted">{{ edu.institution }}</p>
+        </article>
+        {% endfor %}
+      </div>
+
+      <div class="space-y-6">
+        <div>
+          <h2 class="section-heading">CERTIFICATIONS</h2>
+          <span class="emerald-bar mt-2.5"></span>
+        </div>
+
+        <ul class="bg-band p-6 border border-ink/10 space-y-3 text-sm text-ink/90">
+          {% for cert in certifications %}
+          <li class="flex items-start gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-accent mt-2 shrink-0"></span>
+            <span>{{ cert }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

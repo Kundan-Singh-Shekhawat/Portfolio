@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 660" fill="none">
+  <rect width="600" height="660" fill="#F6F7F5"/>
+  <!-- Bold Emerald Green Circle behind portrait -->
+  <circle cx="310" cy="320" r="215" fill="#0E7C55"/>
+  <circle cx="310" cy="320" r="215" stroke="#095D3F" stroke-width="2"/>
+
+  <!-- Portrait silhouette & illustration matching Kundan's blazer, dark collared shirt, beard, and hairstyle -->
+  <!-- Shoulders & Charcoal Textured Blazer -->
+  <path d="M85 660 L118 425 C126 385, 165 352, 225 335 L302 325 L382 342 C438 358, 472 392, 488 438 L525 660 Z" fill="#232625"/>
+  <!-- Dark Grey Collared Shirt Inside Blazer -->
+  <path d="M235 332 L365 338 L405 660 L265 660 Z" fill="#3B403E"/>
+  <!-- Shirt Placket & Buttons -->
+  <path d="M322 395 L358 660 L376 660 L338 395 Z" fill="#323735"/>
+  <circle cx="336" cy="445" r="4.5" fill="#181A19"/>
+  <circle cx="346" cy="520" r="4.5" fill="#181A19"/>
+  <circle cx="356" cy="595" r="4.5" fill="#181A19"/>
+  <!-- Blazer Lapels -->
+  <path d="M225 335 L345 555 L295 660 L195 420 Z" fill="#1B1E1D"/>
+  <path d="M225 335 L202 385 L224 398 L212 422 L345 555" stroke="#343937" stroke-width="2"/>
+  <path d="M372 340 L418 545 L445 435 L382 342 Z" fill="#1B1E1D"/>
+  <!-- Blazer Button -->
+  <circle cx="316" cy="575" r="8" fill="#121413" stroke="#343937" stroke-width="1.5"/>
+
+  <!-- Shirt Collar -->
+  <path d="M232 315 L292 385 L248 398 L215 342 Z" fill="#2D3130"/>
+  <path d="M358 320 L328 388 L368 396 L380 345 Z" fill="#2D3130"/>
+
+  <!-- Neck -->
+  <path d="M242 265 L350 268 L354 352 C325 376, 278 374, 240 342 Z" fill="#C49A76"/>
+  <path d="M242 265 L350 268 L352 315 C312 332, 265 322, 242 288 Z" fill="#A67E5C"/>
+
+  <!-- Ears -->
+  <path d="M206 196 C192 196, 192 238, 212 244 Z" fill="#C49A76"/>
+  <path d="M388 196 C402 196, 402 238, 382 244 Z" fill="#B58B68"/>
+
+  <!-- Head / Face Base -->
+  <path d="M212 132 C212 88, 384 88, 384 132 L386 225 C386 278, 345 312, 298 312 C252 312, 210 278, 210 225 Z" fill="#CFA582"/>
+
+  <!-- Hair (Voluminous swept dark hair) -->
+  <path d="M204 192 C192 145, 202 95, 242 76 C272 60, 332 58, 368 82 C394 98, 402 142, 390 192 C384 155, 376 130, 355 122 C315 112, 255 114, 224 132 C214 148, 212 170, 204 192 Z" fill="#141615"/>
+  <path d="M225 96 C265 76, 330 78, 366 102" stroke="#2B2F2D" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Eyebrows (Thick, dark, expressive) -->
+  <path d="M234 176 Q258 168 282 175" stroke="#181A19" stroke-width="6" stroke-linecap="round"/>
+  <path d="M316 175 Q340 168 364 176" stroke="#181A19" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Eyes -->
+  <ellipse cx="258" cy="190" rx="13" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="258" cy="190" r="5.5" fill="#2B1D14"/>
+  <circle cx="256" cy="188" r="1.8" fill="#FFFFFF"/>
+  <path d="M242 188 Q258 180 274 189" stroke="#181A19" stroke-width="2.5" fill="none"/>
+
+  <ellipse cx="340" cy="190" rx="13" ry="6.5" fill="#FFFFFF"/>
+  <circle cx="340" cy="190" r="5.5" fill="#2B1D14"/>
+  <circle cx="338" cy="188" r="1.8" fill="#FFFFFF"/>
+  <path d="M324 189 Q340 180 356 188" stroke="#181A19" stroke-width="2.5" fill="none"/>
+
+  <!-- Nose -->
+  <path d="M298 182 L296 226 C288 232, 310 232, 312 225" stroke="#9E7454" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Full Trimmed Beard & Mustache -->
+  <path d="M210 212 C214 248, 232 262, 255 256 C268 242, 282 236, 298 236 C314 236, 328 242, 342 256 C365 262, 382 248, 386 212 C386 272, 352 314, 298 314 C244 314, 210 272, 210 212 Z" fill="#1C1F1E"/>
+  <!-- Mustache -->
+  <path d="M256 246 Q278 232 298 240 Q318 232 340 246 Q318 252 298 246 Q278 252 256 246 Z" fill="#141615"/>
+  <!-- Smile / Lips -->
+  <path d="M268 252 Q298 262 328 252 Q298 268 268 252 Z" fill="#B57B6C"/>
+</svg>

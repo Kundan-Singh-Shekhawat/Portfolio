@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="bg-ivory py-12 sm:py-16">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: Direct Contact Info (Email, GitHub, LinkedIn, Location — no Website or Phone) -->
+      <div class="lg:col-span-5 space-y-6">
+        <p class="text-xs uppercase tracking-[0.22em] font-semibold text-emerald-accent">
+          DIRECT INQUIRY // CONTACT
+        </p>
+        <h1 class="font-display-condensed text-5xl sm:text-6xl font-bold text-ink uppercase">
+          Let's Connect
+        </h1>
+        <span class="emerald-bar-wide"></span>
+        <p class="text-base text-ink/80 leading-relaxed">
+          {{ site.availability }}. Send a message using the form or reach out via email, GitHub, or LinkedIn.
+        </p>
+
+        <div class="pt-4 space-y-4 divider-t">
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted">EMAIL</p>
+            <a href="{{ site.social.email }}" class="text-base font-medium text-ink hover:text-emerald-accent transition-colors">
+              {{ site.email }}
+            </a>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted">GITHUB</p>
+            <a href="{{ site.social.github }}" target="_blank" rel="noopener noreferrer" class="text-base font-medium text-ink hover:text-emerald-accent transition-colors">
+              {{ site.social.github_display }} ↗
+            </a>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted">LINKEDIN</p>
+            <a href="{{ site.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="text-base font-medium text-ink hover:text-emerald-accent transition-colors">
+              {{ site.social.linkedin_display }} ↗
+            </a>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted">LOCATION</p>
+            <p class="text-base text-ink">{{ site.location }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Validated Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="bg-band p-6 sm:p-10 border border-ink/10">
+          <div class="mb-6">
+            <h2 class="section-heading">SEND A MESSAGE</h2>
+            <span class="emerald-bar mt-2"></span>
+          </div>
+
+          {% if success %}
+          <div class="mb-6 p-4 bg-ivory border-l-4 border-emerald-accent text-ink space-y-1" role="status">
+            <p class="text-xs uppercase tracking-[0.16em] font-bold text-emerald-accent">Message Saved</p>
+            <p class="text-sm">Thank you for reaching out! Your message has been validated and saved to the database.</p>
+          </div>
+          {% endif %}
+
+          {% if errors %}
+          <div class="mb-6 p-4 bg-ivory border-l-4 border-red-600 text-ink space-y-1.5" role="alert">
+            <p class="text-xs uppercase tracking-[0.16em] font-bold text-red-700">Please fix the following:</p>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              {% for err in errors %}
+              <li>{{ err }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <form action="/contact" method="POST" class="space-y-5" novalidate>
+            <!-- Hidden Honeypot Field for Spam Protection -->
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Website (leave blank)</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" value="" />
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="name" class="block text-[11px] uppercase tracking-[0.16em] font-semibold text-ink">FULL NAME *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="100"
+                value="{{ form_data.name }}"
+                placeholder="Enter your full name"
+                class="w-full px-4 py-3 bg-ivory text-ink text-sm border border-ink/15 placeholder:text-muted/60"
+              />
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="email" class="block text-[11px] uppercase tracking-[0.16em] font-semibold text-ink">EMAIL ADDRESS *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value="{{ form_data.email }}"
+                placeholder="name@domain.com"
+                class="w-full px-4 py-3 bg-ivory text-ink text-sm border border-ink/15 placeholder:text-muted/60"
+              />
+            </div>
+
+            <div class="space-y-1.5">
+              <label for="message" class="block text-[11px] uppercase tracking-[0.16em] font-semibold text-ink">MESSAGE *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                minlength="10"
+                maxlength="5000"
+                placeholder="Tell me about your role, internship opportunity, or project..."
+                class="w-full px-4 py-3 bg-ivory text-ink text-sm border border-ink/15 placeholder:text-muted/60 resize-y"
+              >{{ form_data.message }}</textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="arrow-link w-full py-3.5 px-6 bg-ink text-ivory text-xs uppercase tracking-[0.18em] font-medium hover:bg-emerald-accent hover:text-white transition-colors flex items-center justify-center gap-2"
+            >
+              <span>Send Message</span>
+              <span class="arrow-icon">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
